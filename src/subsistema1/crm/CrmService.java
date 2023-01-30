@@ -1,16 +1,17 @@
 package subsistema1.crm;
 
+import java.util.logging.Logger;
+
 public class CrmService {
 
-	private CrmService() {
-		super();
-	}
-	
-	public static void gravarCliente(String nome, String cep, String cidade, String estado) {
-		System.out.println("Cliente salvo no sistema de CRM:");
-		System.out.println(nome);
-		System.out.println(cep);
-		System.out.println(cidade);
-		System.out.println(estado);
-	}
+    private static final Logger LOGGER = Logger.getLogger(CrmService.class.getName());
+
+    private CrmService() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void gravarCliente(String nome, String cep, String cidade, String estado) {
+        LOGGER.info("Cliente salvo no sistema de CRM: " + nome + " - " + cep + " - " + cidade + " - " + estado);
+    }
 }
+
