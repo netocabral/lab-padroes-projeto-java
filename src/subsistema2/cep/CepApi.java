@@ -2,21 +2,38 @@ package subsistema2.cep;
 
 public class CepApi {
 
-	private static CepApi instancia = new CepApi();
+    private static CepApi INSTANCE = null;
 
-	private CepApi() {
-		super();
-	}
+    private CepApi() {
+    }
 
-	public static CepApi getInstancia() {
-		return instancia;
-	}
-	
-	public String recuperarCidade(String cep) {
-		return "Araraquara";
-	}
-	
-	public String recuperarEstado(String cep) {
-		return "SP";
-	}
+    public static CepApi getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new CepApi();
+        }
+        return INSTANCE;
+    }
+
+    public CidadeEstado recuperarCidadeEstado(String cep) {
+        return new CidadeEstado("Araraquara", "SP");
+    }
+
+    public static class CidadeEstado {
+        private String cidade;
+        private String estado;
+
+        public CidadeEstado(String cidade, String estado) {
+            this.cidade = cidade;
+            this.estado = estado;
+        }
+
+        public String getCidade() {
+            return cidade;
+        }
+
+        public String getEstado() {
+            return estado;
+        }
+    }
 }
+
